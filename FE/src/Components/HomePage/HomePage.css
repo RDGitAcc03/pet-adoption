@@ -1,0 +1,153 @@
+.welcome-div {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(240, 248, 255, 0.4);
+  width: 500px;
+  margin: 40px auto 0;
+}
+
+#welcoming {
+  z-index: 13;
+  color: #393d72;
+  width: 299.454px;
+  height: 282.818px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+  position: absolute;
+  top: 337px;
+  right: 180px;
+}
+
+#top {
+  display: block;
+  text-align: left;
+  position: relative;
+}
+
+#middle {
+  z-index: 10;
+  font-family: Roboto;
+  height: auto;
+  width: auto;
+  color: #393d72;
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  text-align: left;
+  line-height: 67px;
+  letter-spacing: 0px;
+  font-weight: 700;
+  font-size: 58px;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+}
+#content1::after {
+  content: "\a";
+  white-space: pre;
+}
+
+@keyframes arrowing {
+  0% {
+    transform: translate(0px);
+    scale: 1.5;
+  }
+  100% {
+    transform: translateX(15px);
+    scale: 1.5;
+  }
+}
+
+@keyframes boning {
+  0% {
+    scale: 1.1;
+  }
+  100% {
+    scale: 1.6;
+  }
+}
+
+@keyframes staring {
+  0% {
+    scale: 0.8;
+  }
+  100% {
+    scale: 1.1;
+  }
+}
+
+:root {
+  --animation-time: 1.5s;
+}
+
+#arrow {
+  position: absolute;
+  top: 51%;
+  left: -71%;
+  z-index: 12;
+  color: rgb(255, 255, 255);
+  width: 68.536px;
+  height: 84.946px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  filter: none;
+  animation: arrowing var(--animation-time) ease alternate infinite;
+  /* border: 1px solid; */
+}
+
+#star {
+  position: absolute;
+  top: 7%;
+  left: 104%;
+  z-index: 15;
+  color: rgb(255, 255, 255);
+  width: 19.3059px;
+  height: 19.3059px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+  animation: staring var(--animation-time) ease alternate infinite;
+  /* border: 1px solid; */
+}
+
+#bone {
+  position: absolute;
+  top: -25%;
+  left: -28%;
+  z-index: 16;
+  color: rgb(255, 255, 255);
+  width: 32px;
+  height: 24px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+  animation: boning var(--animation-time) ease alternate infinite;
+  /* border: 1px solid; */
+}

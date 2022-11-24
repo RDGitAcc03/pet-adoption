@@ -1,0 +1,12 @@
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+.signup-from-login {
+  display: flex;
+  justify-content: center;
+}
+.signup-from-login span {
+  color: rgb(15, 15, 179);
+  cursor: pointer;
+}

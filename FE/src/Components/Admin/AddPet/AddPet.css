@@ -1,0 +1,132 @@
+.form {
+    display: flex;
+    padding: 16px;
+}
+.form-child{
+    flex-basis: 50%;
+}
+.form > :nth-child(1){
+    /* border: 1px solid; */
+}
+.form > :nth-child(1) .first-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 200px;
+    /* border: 1px solid; */
+    padding: 0;
+    margin-top: -12px;
+}
+.form > :nth-child(1) .second-sec {
+    margin-top: 90px;
+    padding: 0;
+    /* border: 1px solid; */
+}
+
+.form > :nth-child(2){
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.form > :nth-child(2) div:nth-child(2){
+    /* border: 1px solid; */
+    margin-top: 24px;
+    padding: 0;
+}
+.form > :nth-child(3){
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.form > :nth-child(3) .img-container {
+    display: flex;
+    flex-direction: column;
+
+}
+.upload-container {
+    display: flex;
+    /* border: 1px solid; */
+    justify-content: center;
+    height: 90px;
+    width: 80px;
+    margin : 0 auto;
+}
+.upload-img-btn {
+    margin: 0 auto 20px auto;
+    /* flex-basis: 80px; */
+    border-radius: 7px;
+    height: 50px;
+    /* flex-basis: 15px; */
+    /* width: 10px; */
+    padding: 0;
+    /* border: none; */
+    /* border: 1px solid; */
+}
+.form > :nth-child(3) img{
+    border: 1px solid blue;
+    margin-top: 15px;
+    width: 200px;   
+    height: 200px;
+    border-radius: 20px;
+    margin-top: 0;
+}
+
+.form-child [placeholder] {
+    width: 200px;
+}
+.add-pet {
+    display: flex;
+    width: 700px;
+    margin: 0 auto;
+    justify-content: flex-start;
+}
+.add-pet div {
+    padding: 0.4rem 0;
+}
+.type-span{
+    flex-basis: 15%;
+    text-align: center;
+}
+.adoption-span{
+    flex-basis: 120px;
+}
+input[type="checkbox"] {
+    margin-left: 15px;
+}
+.txt-inputs{
+    flex-basis: 40%;
+    margin-bottom: 50px;
+    padding: 0;
+}
+input[type="text"]{
+    margin: 13px 0;
+}
+input[type="text"]:nth-child(1), input[type="text"]:last-child{
+    margin: 0;
+}
+.buttons{
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8px;
+}
+.buttons .btn {
+    margin: 3px;
+    width: 70px;
+}
+.txt-area{
+    width: 180px;
+    height: 160px;
+    resize: none;
+    border: 1px solid rgba(27, 14, 14, 0.623);
+}
+.txt-area[placeholder]{
+    padding: 5px;
+}
+.txt-area:focus {
+    outline: none;
+}

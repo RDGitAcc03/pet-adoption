@@ -1,0 +1,51 @@
+.modal-container {
+  padding: 30px;
+}
+.modal-main {
+  display: flex;
+  /* border: 1px solid; */
+}
+.modal-user-pets {
+  /* border: 1px solid purple; */
+  flex-basis: 30%;
+  text-align: center;
+  padding-top: 30px;
+}
+.modal-body {
+  /* border: 1px solid green; */
+  display: block;
+  padding: 30px;
+}
+.modal-body p{
+    padding-top: 3px;
+}
+.modal-title p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.modal-title p span.title-l {
+  font-weight: 400;
+  margin-right: 10px;
+}
+.modal-title p span.title-r {
+  font-weight: 500;
+  color: rgb(19, 19, 202);
+}
+p span.l {
+  font-weight: 400;
+  margin-right: 10px;
+}
+p span.r {
+  font-weight: 300;
+  color: rgb(19, 19, 202);
+  /* margin-right: 10px; */
+}
+.pets-container p{
+padding-top: 10px;
+}
+.pets-container span.r {
+    color: rgb(128, 93, 28);
+}
+#pets-header {
+  color: rgb(19, 19, 202);
+}

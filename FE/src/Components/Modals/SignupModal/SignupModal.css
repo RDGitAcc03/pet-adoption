@@ -1,0 +1,24 @@
+.sign-up-form .btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.input-pairs {
+    display: flex;
+    justify-content: space-around;
+}
+[placeholder]{
+    flex-basis:45%;
+}
+.login-from-signup{
+    display: flex;
+    justify-content: center;
+}
+.login-from-signup span{
+    color: rgb(15, 15, 179);
+    cursor: pointer;
+    /* border: 1px solid; */
+}
+.sign-up-form .btn-container .btn{
+    flex-basis: 100px;
+}

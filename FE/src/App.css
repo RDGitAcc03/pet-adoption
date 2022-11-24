@@ -1,0 +1,12 @@
+html, body{
+    height: 100%;
+}
+#root{
+    height: 100%;
+    background-image: url("./images/whiteDog.jpg");
+    background-size: cover;
+    background-position: 70% 30%;
+    /* background-repeat: no-repeat; */
+    /* background-position: 2%; */
+    /* width: 100%; */
+}   

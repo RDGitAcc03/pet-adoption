@@ -1,0 +1,46 @@
+.dashboard-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid; */
+}
+.dashboard-container .left-list,
+.dashboard-container .right-list {
+  border: 1px solid;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 500px;
+}
+
+.dashboard-container ul {
+  /* border: 1px solid; */
+  padding-left: 0;
+  list-style-type: none;
+}
+.dashboard-container ul > ul {
+  border-bottom: 1px solid;
+  margin-bottom: 15px;
+  transition-duration: 0.7s;
+  transform: scale(1.02);
+}
+
+ul > ul :hover {
+  cursor: pointer;
+  transition-duration: 0.6s;
+  transform: scale(1.02);
+}
+
+.dashboard-container .add-pet-link {
+  position: absolute;
+  transform: translateY(-100%);
+  right: 180px;
+  color: rgb(29, 29, 196);
+  font-weight: 700;
+}
+
+.dashboard-container .add-pet-link:hover {
+  cursor: pointer;
+
+}
