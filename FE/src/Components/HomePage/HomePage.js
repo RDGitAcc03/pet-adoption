@@ -1,6 +1,8 @@
 import React from "react";
 import "./HomePage.css";
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Button, Heading, Image } from "@chakra-ui/react";
+import SVG from "../../images/hills.svg";
+
 
 // import { Container } from "react-bootstrap";
 // import { useUserContext } from "../../Contexts/userContext";
@@ -12,39 +14,75 @@ const HomePage = () => {
   // const navigate = useNavigate();
 
   // token && isAdmin && navigate("/addPet");
+  let script = document.createElement("script");
+  script.setAttribute('src', '../js/animatingRandom.js');
+  script.setAttribute('type', 'text/javascript');
 
   return (
     <>
-      <Box id="welcoming" borderColor={"#fff"}>
-        <Box id="arrow">
-          <Image
-            src={
-              "http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-5.svg"
-            }
-          />
+      {/* <VStack> */}
+      <section className="sec-1">
+        <Box id="welcoming" borderColor={"#fff"}>
+          <Box id="arrow">
+            <Image
+              src={"http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-5.svg"} />
+          </Box>
+          <Box id="star">
+            <Image
+              src={"http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-4.svg"} />
+          </Box>
+          <Box id="bone">
+            <Image
+              src={"http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-6.svg"} />
+          </Box>
+          <Box id='fingerprints'>
+            <Image src={"http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-1.svg"} />
+          </Box>
+          <Box>
+            <Button id="learnMoreBtn">
+              learn more
+            </Button>
+          </Box>
+          <Box id="top" borderColor={"#fff"}>
+            <span style={{ '--i':1}}>O</span>
+            <span style={{ '--i':2}}>n</span>
+            <span style={{ '--i':3}}>l</span>
+            <span style={{ '--i':4}}>y&nbsp;</span>
+            <span style={{ '--i':5}}>T</span>
+            <span style={{ '--i':6}}>h</span>
+            <span style={{ '--i':7}}>e&nbsp;</span>
+            <span style={{ '--i':8}}>B</span>
+            <span style={{ '--i':9}}>e</span>
+            <span style={{ '--i':10}}>s</span>
+            <span style={{ '--i':11}}>t</span>
+
+            {/* <Box className="word">
+              <Box>O</Box><Box>n</Box><Box>l</Box><Box>y</Box>
+            </Box>
+            <Box className="word">
+              <Box>T</Box><Box>h</Box><Box>e</Box>
+            </Box>
+            <Box className="word">
+              <Box>B</Box><Box>e</Box><Box>s</Box><Box>t</Box>
+            </Box> */}
+          </Box>
+          <Heading as={'h1'} id="middle" borderColor={"#fff"}>
+            <span className="content1">For Your</span>
+            <span className="content2">Best Friend</span>
+          </Heading>
+
         </Box>
-        <Box id="star">
-          <Image
-            src={
-              "	http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-4.svg"
-            }
-          />
+        <Box className="hills">
+          <Image src={SVG} />
         </Box>
-        <Box id="bone">
-          <Image
-            src={
-              "	http://demo2.themelexus.com/petzen/wp-content/uploads/2020/05/revolution-icon-6.svg"
-            }
-          />
-        </Box>
-        <Box id="top" borderColor={"#fff"}>
-          Only The Best
-        </Box>
-        <Box id="middle" borderColor={"#fff"}>
-          <span id="content1">For Your</span>
-          <span id="content2">Best Friend</span>
-        </Box>
-      </Box>
+      </section>
+      <section className="sec-2">
+        <Heading as={'h2'}>
+          <span className="content1">Welcome To</span>
+          <span className="content2">Pet Care Center</span>
+        </Heading>
+      </section>
+      {/* </VStack> */}
     </>
     // <div className="welcome-div">
     //   <Container>
@@ -65,3 +103,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
