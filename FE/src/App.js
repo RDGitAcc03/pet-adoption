@@ -1,3 +1,5 @@
+import React from "react";
+import './Components/FontawesomeIcons';
 import "./App.css";
 import HomePage from "./Components/HomePage/HomePage";
 import NavBar from "./Components/Navbar/Navbar";
@@ -12,6 +14,8 @@ import ProtectedUser from "./Components/ProtectedRoutes/ProtectedUser/ProtectedU
 import ProfileSettings from "./Components/ProfileSettings/ProfileSettings";
 import ProtectedAdmin from "./Components/ProtectedRoutes/ProtectedAdmin/ProtectedAdmin";
 import UserContextProvider from "./Contexts/userContext";
+
+
 
 
 const App = () => {
