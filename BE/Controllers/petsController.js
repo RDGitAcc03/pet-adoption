@@ -6,7 +6,7 @@ const {
   setPetStatusFosteredModel,
   setPetStatusAdoptedModel,
   setPetStatusNotOwnedModel,
-  getAllPetsModel
+  getAllPetsModel,
 } = require("../Models/petsModel");
 
 function addPet(req, res) {
@@ -99,6 +99,8 @@ async function getAllPets(req, res) {
     res.status(400).send(err.message);
   }
 }
+
+
 
 module.exports = {
   addPet,

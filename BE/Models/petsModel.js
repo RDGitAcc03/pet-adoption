@@ -1,5 +1,4 @@
 const Pet = require("../Schemas/MongoSchemas/petSchema");
-editPetModel
 async function addPetModel(newUser) {
   try {
     delete newUser.petId;
@@ -87,12 +86,12 @@ async function setPetStatusNotOwnedModel(petId) {
 async function getAllPetsModel() {
   try {
     const pets = await Pet.find({});
-    // console.log("pets Model", pets);
     if (pets) return pets;
   } catch (err) {
     console.log(err.message);
   }
 }
+
 
 module.exports = {
   addPetModel,
@@ -102,5 +101,5 @@ module.exports = {
   setPetStatusFosteredModel,
   setPetStatusAdoptedModel,
   setPetStatusNotOwnedModel,
-  getAllPetsModel
+  getAllPetsModel,
 };

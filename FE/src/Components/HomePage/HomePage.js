@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { Box, Button, Heading, Image } from "@chakra-ui/react";
-import SVG from "../../images/hills.svg";
+import hillsSVG from "../../images/hills.svg";
+import homePNG from "../../images/home.png";
+import grayShape from '../../images/grayShape.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import instance from '../../Contexts/axiosContext';
 
 // import { Container } from "react-bootstrap";
 // import { useUserContext } from "../../Contexts/userContext";
@@ -10,13 +13,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HomePage = () => {
   // const { token, userLoggedIn } = useUserContext();
+  const [weeklyPet, setWeeklyPet] = useState();
+  const [currentDay, setCurrentDay] = useState(() => {
+    return new Date().getDate();
+  });
   // const { isAdmin } = userLoggedIn;
   // const navigate = useNavigate();
 
   // token && isAdmin && navigate("/addPet");
-  let script = document.createElement("script");
-  script.setAttribute('src', '../js/animatingRandom.js');
-  script.setAttribute('type', 'text/javascript');
+  const getWeeklyPet = async () => {
+    try {
+      const chosenPet = await instance.get("/appOperations/getWeeklyPet");
+      if (chosenPet) {
+        console.log("weeklyPet: ", chosenPet.data);
+        setWeeklyPet(() => chosenPet.data);
+      }
+    }
+    catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  const changeImageOnceAWeek = () => {
+    if (currentDay % 10 === 0) {
+      getWeeklyPet();
+    }
+  }
+
+  useEffect(() => {
+    // changeImageOnceAWeek();
+    getWeeklyPet();
+    console.log("currentDay: ", currentDay);
+  }, [])
 
   return (
     <>
@@ -73,7 +101,7 @@ const HomePage = () => {
 
         </Box>
         <Box className="hills">
-          <Image src={SVG} />
+          <Image src={hillsSVG} />
         </Box>
       </section>
       <section className="sec-2">
@@ -83,7 +111,8 @@ const HomePage = () => {
         </Heading>
         <Box id="mid">
           <Box id="mid-left">
-            <Image src={"http://demo2.themelexus.com/petzen/wp-content/uploads/2020/03/home-1-01.jpg"} />
+            <Image id="grayShape" src={grayShape} />
+            <Image id="home" src={homePNG} />
           </Box>
           <Box id="mid-right">
             <Box id="one"><p>Grooming & Supply provides grooming services for all dog and cat breeds. We are fully committed to the health and hygiene of your furry best friends. We offer free estimates and consultations to help your pet look and feel their best!</p></Box>
@@ -99,7 +128,28 @@ const HomePage = () => {
               <Button>LEARN MORE</Button>
             </Box>
           </Box>
+
         </Box>
+      </section>
+      <section className="sec-3">
+        <Heading as={'h2'}>Pet Of The Week:</Heading>
+        <Box id="container">
+          <Box id="left">
+            <Box>Meet our professionals</Box>
+            <Box><p><span className="content1">We have an experienced qualified</span>
+              <span className="content2">team to take care of your best </span>
+              <span className="content3">friend</span>
+            </p></Box>
+            <Box><Button>VIEW ALL TEAM</Button></Box>
+          </Box>
+          <Box id="right">
+              <Image id="template" src={
+                'http://demo2.themelexus.com/petzen/wp-content/uploads/2020/03/home-1-20.jpg'
+              } />
+              <Image id="weeklyPet" src={
+                weeklyPet?.imageUrl} />
+          </Box></Box>
+
       </section>
       {/* </VStack> */}
     </>

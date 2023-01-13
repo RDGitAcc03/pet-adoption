@@ -2,8 +2,9 @@ const express = require("express");
 require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 8080;
 const cors = require("cors");
-const usersRoute = require("./routes/usersRoute");
-const petsRoute = require('./Routes/petsRoute');
+const usersRoute = require("./Routes/usersRoute");
+const petsRoute = require("./Routes/petsRoute");
+const appOperationsRoute = require("./Routes/appOperationsRoute");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use("/users", usersRoute);
 app.use("/pets", petsRoute);
+app.use("/appOperations", appOperationsRoute);
 
 mongoose
   .connect(process.env.MONGO_URI, {

@@ -11,16 +11,15 @@ import petLogo from "../../images/logo.png";
 const NavBar = () => {
   const navigate = useNavigate();
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const { token, setToken, setUserLoggenIn } = useUserContext();
+  const { token, setToken, setUserLoggedIn } = useUserContext();
 
   const handleLogout = async () => {
     try {
       const res = await instance.get("/users/logout");
       console.log("res.data", res.data);
       if (res.data.ok) {
-        setToken(null);
-        setUserLoggenIn(null);
-        window.location.reload();
+        setToken(false);
+        setUserLoggedIn({});
         navigate("/");
       }
     } catch (err) {

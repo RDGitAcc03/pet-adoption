@@ -17,10 +17,10 @@ const UserContextProvider = ({ children }) => {
     try {
       // "http://localhost:8080/users/verifyLogin", { withCredentials: true }
       const userData = await instance.get("/users/verifyLogin");
-      if (userData.data) {
+      if (userData) {
         const { firstName, isAdmin, lastName, email, phoneNumber, bio, id } =
           userData.data;
-        console.log("user connected: ", userData.data.id);
+        console.log("user connected: ", userData.data.firstName);
         if (userData.data) {
           setUserLoggedIn({
             id,
@@ -32,7 +32,7 @@ const UserContextProvider = ({ children }) => {
             bio,
           });
           setToken(true);
-          console.log("user from UserContext: ", {firstName, isAdmin, lastName, email, phoneNumber, bio, id});
+          console.log("user from UserContext: ", { firstName, isAdmin, lastName, email, phoneNumber, bio, id });
         }
       }
     } catch (err) {
@@ -41,8 +41,8 @@ const UserContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if(token) getUserDetails();
-  }, [token]);
+    getUserDetails();
+  }, [])
 
   return (
     <userContext.Provider
@@ -53,6 +53,7 @@ const UserContextProvider = ({ children }) => {
         setUserLoggedIn,
         allUsers,
         setAllUsers,
+        getUserDetails
       }}
     >
       {children}
