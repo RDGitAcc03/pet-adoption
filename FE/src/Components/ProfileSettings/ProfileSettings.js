@@ -46,9 +46,9 @@ function ProfileSettings() {
     if(person) setUpdatedUser(person.data);
   }
 
-  // useEffect(()=> {
-  //   getCurrentPerson();
-  // }, [])
+  useEffect(()=> {
+    getCurrentPerson();
+  }, [])
 
   return (
     <>

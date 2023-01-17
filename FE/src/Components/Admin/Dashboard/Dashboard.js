@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
+  const { isAdmin } = useUserContext();
+  console.log("dashboard is rendered");
+
   const { allUsers, setAllUsers } = useUserContext();
   const { allPets, setAllPets } = usePetContext();
   const navigate = useNavigate();
@@ -48,7 +51,7 @@ const Dashboard = () => {
       <div className="right-list">
         <Pets allPets={allPets} />
       </div>
-    </div>
+      </div>
   );
 };
 

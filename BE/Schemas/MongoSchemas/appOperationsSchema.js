@@ -4,8 +4,9 @@ const { Schema } = mongoose;
 
 const appOperationsSchema = new Schema(
   {
-        isRandomized: { type: Boolean, default: false }, // String is shorthand for {type: String}
-        petsOfTheWeek: { type: Array, default: []}
+    isRandomized: { type: Boolean, default: false }, // String is shorthand for {type: String}
+    petsOfTheWeek: { type: Array, default: [] },
+    lastRandomPet: { type: Object, default: {} }
   },
   { collection: "appOperations" }
 );

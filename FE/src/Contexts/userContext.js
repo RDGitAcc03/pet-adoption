@@ -10,29 +10,20 @@ export const useUserContext = () => {
 
 const UserContextProvider = ({ children }) => {
   const [token, setToken] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState({});
   const [allUsers, setAllUsers] = useState([]);
 
   const getUserDetails = async () => {
     try {
-      // "http://localhost:8080/users/verifyLogin", { withCredentials: true }
       const userData = await instance.get("/users/verifyLogin");
       if (userData) {
-        const { firstName, isAdmin, lastName, email, phoneNumber, bio, id } =
-          userData.data;
-        console.log("user connected: ", userData.data.firstName);
+        const { firstName, id, isAdmin } = userData.data;
+        console.log("User Connected: ", { firstName, id } );
         if (userData.data) {
-          setUserLoggedIn({
-            id,
-            firstName,
-            isAdmin,
-            lastName,
-            email,
-            phoneNumber,
-            bio,
-          });
+          setUserLoggedIn(userData.data);
           setToken(true);
-          console.log("user from UserContext: ", { firstName, isAdmin, lastName, email, phoneNumber, bio, id });
+          setIsAdmin(isAdmin);
         }
       }
     } catch (err) {
@@ -47,6 +38,8 @@ const UserContextProvider = ({ children }) => {
   return (
     <userContext.Provider
       value={{
+        isAdmin,
+        setIsAdmin,
         token,
         setToken,
         userLoggedIn,

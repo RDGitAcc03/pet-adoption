@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { Box, Button, Heading, Image } from "@chakra-ui/react";
+import petLogo from "../../images/logo.png";
 import hillsSVG from "../../images/hills.svg";
 import homePNG from "../../images/home.png";
 import grayShape from '../../images/grayShape.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import instance from '../../Contexts/axiosContext';
+// import { useUserContext } from "../../Contexts/userContext";
 
 // import { Container } from "react-bootstrap";
 // import { useUserContext } from "../../Contexts/userContext";
 // import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  // const { token, userLoggedIn } = useUserContext();
+
   const [weeklyPet, setWeeklyPet] = useState();
   const [currentDay, setCurrentDay] = useState(() => {
     return new Date().getDate();
@@ -25,7 +27,7 @@ const HomePage = () => {
     try {
       const chosenPet = await instance.get("/appOperations/getWeeklyPet");
       if (chosenPet) {
-        console.log("weeklyPet: ", chosenPet.data);
+        // console.log("weeklyPet: ", chosenPet.data);
         setWeeklyPet(() => chosenPet.data);
       }
     }
@@ -41,9 +43,10 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    // changeImageOnceAWeek();
+    // changeImageOnceAWeek(); 
+
     getWeeklyPet();
-    console.log("currentDay: ", currentDay);
+    // console.log("currentDay: ", currentDay);
   }, [])
 
   return (
@@ -143,13 +146,51 @@ const HomePage = () => {
             <Box><Button>VIEW ALL TEAM</Button></Box>
           </Box>
           <Box id="right">
-              <Image id="template" src={
-                'http://demo2.themelexus.com/petzen/wp-content/uploads/2020/03/home-1-20.jpg'
-              } />
+            <Image id="template" src={
+              'http://demo2.themelexus.com/petzen/wp-content/uploads/2020/03/home-1-20.jpg'
+            } />
+            <Box id="imgContainer">
               <Image id="weeklyPet" src={
                 weeklyPet?.imageUrl} />
-          </Box></Box>
+            </Box>
+          </Box>
+        </Box>
+        {/* <Box id="getInTouch">
 
+        </Box> */}
+      </section>
+      <section className="sec-4">
+        <Box id="footerContent">
+          <Box>
+            <Box>
+              <a href="">
+                <Image src={petLogo} w={'40px'} />
+              </a>
+            </Box>
+            <Box>Lorem ipsum dolor sit amet, elit.
+              Aenean ligula eget dolor.</Box>
+            <Box>3</Box>
+          </Box>
+          <Box>
+            <Box>Contact Us</Box>
+            <Box>2</Box>
+          </Box>
+          <Box>
+            <Box>Working Hours</Box>
+            <Box>
+              <p>Monday to Friday</p>
+              <p>Open from 9am – 6pm</p>
+              <p>Holidays/Weekends – Closed</p>
+            </Box>
+          </Box>
+          <Box>
+            <Box>Newsletter</Box>
+            <Box>2</Box>
+          </Box>
+        </Box>
+        <Box id="copyright">
+          Copyright © 2020. All Rights Reserved. Carefully crafted by ThemeLexus.
+        </Box>
       </section>
       {/* </VStack> */}
     </>

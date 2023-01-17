@@ -10,7 +10,7 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
   const navigate = useNavigate();
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  const { userLoggedIn, setUserLoggedIn, setToken } = useUserContext();
+  const { userLoggedIn, setUserLoggedIn, setToken, setIsAdmin } = useUserContext();
 
   const handleSignupFromLogin = (e) => {
     e.preventDefault();
@@ -25,15 +25,13 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
       const userData = await instance.post("/users/login", userLoggedIn);
       console.log("userData.data", userData.data);
       if (userData) {
+        const { isAdmin } = userData.data;
+        console.log("isAdmin from Login Modal: ", isAdmin);
         setShowLoginModal(false);
         setUserLoggedIn(userData.data);
         setToken(true);
-        const {isAdmin} = userData.data;
-        if (isAdmin) {
-          navigate("/dashboard");
-        } else {
-          navigate("/");
-        }
+        setIsAdmin(isAdmin);
+        isAdmin ? navigate("/dashboard") : navigate("/");
       }
     } catch (err) {
       console.log(err.message);

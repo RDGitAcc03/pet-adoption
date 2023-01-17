@@ -1,13 +1,18 @@
-import React from "react";
 import "./ProtectedUser.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../Contexts/userContext";
+// import { useEffect } from "react";
 
 const ProtectedUser = ({ children }) => {
-  const {token} = useUserContext();
+  const { token } = useUserContext();
+  const navigate = useNavigate();
 
-  console.log("token", token);
-  return token ? children : <Navigate to="/" />;
+  return token ? children : navigate("/");
+
+  // useEffect(() => {
+  //   console.log("token from ProtectedUser", token);
+  //   return token ? children : navigate("/");
+  // }, []);
 };
 
 export default ProtectedUser;
