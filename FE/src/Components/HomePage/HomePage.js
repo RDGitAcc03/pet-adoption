@@ -7,6 +7,7 @@ import homePNG from "../../images/home.png";
 import grayShape from '../../images/grayShape.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import instance from '../../Contexts/axiosContext';
+import { FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaTwitter, FaYoutube } from 'react-icons/fa';
 // import { useUserContext } from "../../Contexts/userContext";
 
 // import { Container } from "react-bootstrap";
@@ -163,17 +164,59 @@ const HomePage = () => {
         <Box id="footerContent">
           <Box>
             <Box>
-              <a href="">
-                <Image src={petLogo} w={'40px'} />
+              <a href="/">
+                <Image src={petLogo} w={'35px'} />
+                <span>AdoptMe</span>
               </a>
             </Box>
-            <Box>Lorem ipsum dolor sit amet, elit.
-              Aenean ligula eget dolor.</Box>
-            <Box>3</Box>
+            <Box>
+              <p>
+                Lorem ipsum dolor sit amet, elit.
+                <br />
+                Aenean ligula eget dolor.
+              </p>
+            </Box>
+            <Box>
+              <Box className="socialIcon">
+                <a href="#">
+                  <FaTwitter />
+                </a>
+              </Box>
+              <Box className="socialIcon">
+                <a href="#">
+                  <FaFacebookF />
+                </a>
+              </Box>
+              <Box className="socialIcon">
+                <a href="#">
+                  <FaInstagram />
+                </a>
+              </Box>
+              <Box className="socialIcon">
+                <a href="#">
+                  <FaYoutube />
+                </a>
+              </Box>
+            </Box>
           </Box>
-          <Box>
+          <Box id="contactUs">
             <Box>Contact Us</Box>
-            <Box>2</Box>
+            <Box id="details">
+              <Box>
+                <Box><FaPhoneAlt /></Box>
+                <Box>(+1800) 456-789</Box>
+              </Box>
+              <Box>
+                <Box><FaEnvelope /></Box>
+                <Box>Contact@example.com</Box>
+              </Box>
+              <Box>
+                <Box><FaMapMarkerAlt /></Box>
+                <Box>Box 565, Charlestown, Nevis,
+                  <br />
+                  West Indies, Caribbean</Box>
+              </Box>
+            </Box>
           </Box>
           <Box>
             <Box>Working Hours</Box>
@@ -185,11 +228,14 @@ const HomePage = () => {
           </Box>
           <Box>
             <Box>Newsletter</Box>
-            <Box>2</Box>
+            <Box>
+              <input type="email" name="email" placeholder="Your email..." required/>
+              <input type="submit" value="Subscribe" />
+            </Box>
           </Box>
         </Box>
         <Box id="copyright">
-          Copyright © 2020. All Rights Reserved. Carefully crafted by ThemeLexus.
+          Copyright © 2020. All Rights Reserved. Carefully crafted by <span>ThemeLexus</span>.
         </Box>
       </section>
       {/* </VStack> */}
