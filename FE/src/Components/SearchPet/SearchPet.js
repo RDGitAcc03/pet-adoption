@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import {
   Button,
 } from "react-bootstrap";
-import { Heading, Input, Stack, Radio, Select, Flex } from '@chakra-ui/react';
+import { Heading, Stack, Flex, Box } from '@chakra-ui/react';
 import styles from "../SearchPet/SearchPet.module.css";
 import PetList from "../PetList/PetList";
 import instance from "../../Contexts/axiosContext";
+import { AiOutlineClear } from 'react-icons/ai';
 
 const SearchPet = () => {
   const [arrPets, setArrPets] = useState([]);
-  const [searchedPet, setSearchedPet] = useState({
+  const defaultSearchObj = {
     type: "",
     adoptionStatus: "",
     name: "",
     height: 0,
     weight: 0,
-  });
+  };
+  const [searchedPet, setSearchedPet] = useState(defaultSearchObj);
+
+  const setProperties = (e) => {
+    setSearchedPet({ ...searchedPet, [e.target.name]: e.target.value });
+  }
 
   const filterPets = async (e) => {
     try {
@@ -30,33 +36,34 @@ const SearchPet = () => {
     }
   };
 
-  // const selection = document.querySelector('select');
-  // selection && selection.addEventListener('select', () => {
-  //   selection.style.outline = 'none';
-  // })
 
-  const toggleAdvancedOptions = () => {
+  const toggleAdvancedOptions = (e) => {
+    e.preventDefault();
     const advanced = document.getElementById('advanced');
     let toggle = advanced.dataset.toggle;
-    console.log("toggle: ", toggle);
+    // console.log("toggle: ", toggle);
     const advancedOptions = document.querySelector('#advanced-options');
 
     if (toggle === "false") {
-      // advancedOptions.classList.remove(...advancedOptions.classList);
-      // advancedOptions.classList.add('displayOptions');
       advancedOptions.style.display = 'block';
-      console.log("advancedOptions classList: ", advancedOptions.className);
+      // console.log("advancedOptions classList: ", advancedOptions.className);
       advanced.setAttribute('data-toggle', "true");
     } else {
-      // advancedOptions.classList.remove(...advancedOptions.classList);
       advancedOptions.style.display = 'none';
-      console.log("advancedOptions classList: ", advancedOptions.className);
+      // console.log("advancedOptions classList: ", advancedOptions.className);
       advanced.setAttribute('data-toggle', "false");
     }
-    console.log("advanced: ", advanced);
+    // console.log("advanced: ", advanced);
   }
 
-  const setChoiceOfAdoption = (button) => {
+  const clearForm = () => {
+    const form = document.querySelector('form');
+    setSearchedPet(defaultSearchObj);
+    form.reset();
+    console.log("searchedPet after clearing: ", searchedPet);
+  }
+
+  const setAdoptionStatusUI = (button) => {
     if (button.getAttribute('value') === "Owned") {
       button.classList.add('left')
     } else if (button.getAttribute('value') === "Fostered") {
@@ -64,117 +71,22 @@ const SearchPet = () => {
     } else { button.classList.add('right') }
   }
 
+  const setAdoptionWrapper = (e) => {
+    setAdoptionStatusUI(e.target);
+    setProperties(e);
+  }
+
+  console.log("searchedPet: ", searchedPet);
+
   return (
-    <label>
-      {/* <FormControl nameName="search-pet-form">
-        <Form.Group>
-          <Heading as='h1'>Search For A Pet</Heading>
-          <Dropdown nameName="type-dropdown">
-            <label nameName="d-flex justify-content-between">
-              <button nameName="type-button">Type</button>
-              <DropdownButton
-                nameName="p-0"
-                title=""
-                name="type"
-                variant="success"
-                onSelect={(e) => setSearchedPet({ ...searchedPet, type: e })}
-              >
-                <Dropdown.Item eventKey="Dog">Dog</Dropdown.Item>
-                <Dropdown.Item eventKey="Cat">Cat</Dropdown.Item>
-              </DropdownButton>
-            </label> 
-          </Dropdown>
-          <label>
-            <Accordion defaultActiveKey="0" flush>
-              <Accordion.Item>
-                <Accordion.Header>Advanced</Accordion.Header>
-                <Accordion.Body>
-                  <Dropdown nameName="adoption-status-dropdown">
-                    <label nameName="d-flex justify-content-between">
-                      <button nameName="adoption-button">Adoption Status</button>
-                      <DropdownButton
-                        nameName=""
-                        title=""
-                        variant="success"
-                        onSelect={(e) =>
-                          setSearchedPet({ ...searchedPet, adoptionStatus: e })
-                        }
-                      >
-                        <Dropdown.Item eventKey="Adopted">
-                          Adopted
-                        </Dropdown.Item>
-                        <Dropdown.Item eventKey="Fostered">
-                          Fostered
-                        </Dropdown.Item>
-                        <Dropdown.Item eventKey="Not Owned">
-                          Not Owned
-                        </Dropdown.Item>
-                      </DropdownButton>
-                    </label> 
-                  </Dropdown>
-                  <label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Name"
-                      name="name"
-                      onChange={(e) =>
-                        setSearchedPet({
-                          ...searchedPet,
-                          [e.target.name]: e.target.value,
-                        })
-                      }
-                    />
-                  </label> 
-                  <label>
-                    <Form.Control
-                      name="height"
-                      type="number"
-                      placeholder="Height"
-                      onChange={(e) =>
-                        setSearchedPet({
-                          ...searchedPet,
-                          [e.target.name]: e.target.value,
-                        })
-                      }
-                    />
-                  </label> 
-                  <label>
-                    <Form.Control
-                      name="weight"
-                      type="number"
-                      placeholder="Weight"
-                      onChange={(e) =>
-                        setSearchedPet({
-                          ...searchedPet,
-                          [e.target.name]: e.target.value,
-                        })
-                      }
-                    />
-                  </label> 
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </label> 
-
-          <label nameName="search-btn-container">
-            <Button
-              nameName="search-btn"
-              type="submit"
-              onClick={(e) => filterPets(e)}
-            >
-              Search
-            </Button>
-          </label> 
-        </Form.Group>
-      </FormControl> */}
-
+    <div>
       <form style={{
         background: "#f8f8f8",
         width: "400px",
         height: "500px",
         margin: "0 auto",
         position: "absolute",
-        top: "100px",
+        top: "18%",
         left: "50px",
         borderRadius: "15px",
         display: "flex",
@@ -184,6 +96,14 @@ const SearchPet = () => {
         padding: '100px 50px',
         boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
       }}>
+        <AiOutlineClear onClick={() => clearForm()}
+          style={{
+            cursor: "pointer",
+            position: "absolute",
+            top: "4%",
+            right: "5%",
+            fontSize: "1.4rem"
+          }} />
         <Stack>
           <Heading as="h1" size="lg" style={{
             position: "absolute",
@@ -197,28 +117,32 @@ const SearchPet = () => {
             width: "53%"
           }}>
             <label>Type:</label>
-            <Radio
-              isChecked={true}
-              value="cat"
-              aria-label="cat"
-              name="animal-type"
-            >
-              Cat
-            </Radio>
-            <Radio
-              value="dog"
-              aria-label="dog"
-              name="animal-type"
-            >
-              Dog
-            </Radio>
+            <Stack isInline w={'100%'} >
+              <Box className={styles["radio-item"]}>
+                <input type={'radio'}
+                  id="cat"
+                  name="type"
+                  value="Cat"
+                  color="pink"
+                  onChange={(e) => setProperties(e)} />
+                <label htmlFor="cat">Cat</label>
+              </Box>
+              <Box className={styles["radio-item"]}>
+                <input type={'radio'}
+                  id="dog"
+                  name="type"
+                  value="Dog"
+                  onChange={(e) => setProperties(e)} />
+                <label htmlFor="dog">Dog</label>
+              </Box>
+            </Stack>
           </Flex>
           <Flex alignItems='center' justifyContent='space-between' style={{
             position: "absolute",
             top: "26%",
             left: "42%"
           }}>
-            <div id="advanced" style={{ display: 'inline', margin: '10px auto' }} data-toggle="false" onClick={() => toggleAdvancedOptions()}>Advanced</div>
+            <div id="advanced" className={styles["advanced"]} data-toggle="false" onClick={(e) => toggleAdvancedOptions(e)}>Advanced</div>
           </Flex>
           <Stack id="advanced-options" display={"none"} className={styles["advanced-options"]} style={{
             position: "absolute",
@@ -229,22 +153,18 @@ const SearchPet = () => {
             <Stack isInline w={'fit-content'} >
               <label>Adoption Status</label>
               <Stack id='adoptionSelection' isInline border={'1px solid #E2E8F0'} borderRadius={'6px'}>
-                <button type={'button'} value='Owned' className={styles["spaced"]} onClick={(e) => setChoiceOfAdoption(e.target)} >Owned</button>
-                <button type={'button'} value='Fostered' className={styles["spaced"]} style={{ borderLeft: '1px solid #E2E8F0' }} onClick={(e) => setChoiceOfAdoption(e.target)}>Fostered</button>
-                <button type={'button'} value='Adopted' className={styles["spaced"]} style={{ borderLeft: '1px solid #E2E8F0' }} onClick={(e) => setChoiceOfAdoption(e.target)}>Adopted</button>
+                <button type={'button'} value='Owned' className={styles["spaced"]} name="adoptionStatus" onClick={(e) => setAdoptionWrapper(e)}>Owned</button>
+                <button type={'button'} value='Fostered' className={styles["spaced"]} style={{ borderLeft: '1px solid #E2E8F0' }} name="adoptionStatus" onClick={(e) => setAdoptionWrapper(e)}>Fostered</button>
+                <button type={'button'} value='Adopted' className={styles["spaced"]} style={{ borderLeft: '1px solid #E2E8F0' }} name="adoptionStatus" onClick={(e) => setAdoptionWrapper(e)}>Adopted</button>
               </Stack>
-              {/* <select nameName={styles["selection"]} placeholder='Adoption Status'>
-              <option value='Owned'>Owned</option>
-              <option value='Fostered'>Fostered</option>
-              <option value='Adopted'>Adopted</option>
-            </select> */}
             </Stack>
             <Stack isInline >
               <label>Name:</label>
               <input
                 className={styles["input-style"]}
                 placeholder="Name"
-                aria-label="Name"
+                name="name"
+                onChange={(e) => setProperties(e)}
               />
             </Stack>
             <Stack isInline>
@@ -252,7 +172,8 @@ const SearchPet = () => {
               <input
                 className={styles["input-style"]}
                 placeholder="Height"
-                aria-label="Height"
+                name="height"
+                onChange={(e) => setProperties(e)}
               />
             </Stack>
             <Stack isInline>
@@ -260,26 +181,27 @@ const SearchPet = () => {
               <input
                 className={styles["input-style"]}
                 placeholder="Weight"
-                aria-label="Weight"
+                name="weight"
+                onChange={(e) => setProperties(e)}
               />
             </Stack>
           </Stack>
-          <Button className={styles["search-btn"]} type="submit" style={{
-            position: "absolute",
-            bottom: "6%",
-            left: "28%",
-            width: "45%"
-          }}>
+          <Button className={styles["search-btn"]}
+            type="submit"
+            onClick={(e) => filterPets(e)}
+            style={{
+              position: "absolute",
+              bottom: "6%",
+              left: "28%",
+              width: "45%"
+            }}>
             Search
           </Button>
         </Stack>
       </form>
 
-
-
-
-      <label className="pets-list">{<PetList arrPets={arrPets} />}</label>
-    </label>
+      <div className={styles["pets-list"]}>{<PetList arrPets={arrPets} />}</div>
+    </div>
   );
 };
 
