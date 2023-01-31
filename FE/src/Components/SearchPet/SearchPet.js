@@ -124,7 +124,7 @@ const SearchPet = () => {
                   name="type"
                   value="Cat"
                   color="pink"
-                  onChange={(e) => setProperties(e)} />
+                  onClick={(e) => setProperties(e)} />
                 <label htmlFor="cat">Cat</label>
               </Box>
               <Box className={styles["radio-item"]}>
@@ -132,7 +132,7 @@ const SearchPet = () => {
                   id="dog"
                   name="type"
                   value="Dog"
-                  onChange={(e) => setProperties(e)} />
+                  onClick={(e) => setProperties(e)} />
                 <label htmlFor="dog">Dog</label>
               </Box>
             </Stack>
@@ -168,7 +168,7 @@ const SearchPet = () => {
               />
             </Stack>
             <Stack isInline>
-              <label>Height:</label>
+              <label>Height (Cm):</label>
               <input
                 className={styles["input-style"]}
                 placeholder="Height"
@@ -177,7 +177,7 @@ const SearchPet = () => {
               />
             </Stack>
             <Stack isInline>
-              <label>Weight:</label>
+              <label>Weight (Kg):</label>
               <input
                 className={styles["input-style"]}
                 placeholder="Weight"
@@ -200,7 +200,11 @@ const SearchPet = () => {
         </Stack>
       </form>
 
-      <div className={styles["pets-list"]}>{<PetList arrPets={arrPets} />}</div>
+      <div className={styles["pets-list"]}>
+        {
+          arrPets ? <PetList arrPets={arrPets} /> : <span>No Results Found</span>
+        }
+      </div>
     </div>
   );
 };

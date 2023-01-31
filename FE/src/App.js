@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Components/FontawesomeIcons';
-import "./App.css";
 import HomePage from "./Components/HomePage/HomePage";
 import NavBar from "./Components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -13,12 +12,30 @@ import Dashboard from "./Components/Admin/Dashboard/Dashboard";
 import ProtectedUser from "./Components/ProtectedRoutes/ProtectedUser/ProtectedUser";
 import ProfileSettings from "./Components/ProfileSettings/ProfileSettings";
 import ProtectedAdmin from "./Components/ProtectedRoutes/ProtectedAdmin/ProtectedAdmin";
-import UserContextProvider from "./Contexts/userContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
+import { useUserContext } from "./Contexts/userContext";
 
 
 const App = () => {
+
+  const { token, userLoggedIn } = useUserContext();
+
+  const showToastMessage = () => {
+    toast(`Hi ${userLoggedIn.firstName} ${userLoggedIn.lastName}!`, {
+      position: toast.POSITION.TOP_LEFT,
+      className: 'toast-message',
+    });
+  };
+
+  useEffect(() => {
+    token && showToastMessage();
+  }, [token])
+
   return (
-    <UserContextProvider>
+    <>
+      <ToastContainer />
       <PetContextProvider>
         <BrowserRouter>
           <NavBar />
@@ -54,7 +71,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </PetContextProvider>
-    </UserContextProvider>
+    </>
   );
 };
 

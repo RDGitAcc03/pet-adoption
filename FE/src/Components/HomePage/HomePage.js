@@ -10,16 +10,14 @@ import instance from '../../Contexts/axiosContext';
 import { FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaTwitter, FaYoutube } from 'react-icons/fa';
 // import { useUserContext } from "../../Contexts/userContext";
 
-// import { Container } from "react-bootstrap";
-// import { useUserContext } from "../../Contexts/userContext";
-// import { useNavigate } from "react-router-dom";
-
 const HomePage = () => {
 
   const [weeklyPet, setWeeklyPet] = useState();
+  // const { token, userLoggedIn } = useUserContext();
   const [currentDay, setCurrentDay] = useState(() => {
     return new Date().getDate();
   });
+
   // const { isAdmin } = userLoggedIn;
   // const navigate = useNavigate();
 
@@ -45,14 +43,12 @@ const HomePage = () => {
 
   useEffect(() => {
     // changeImageOnceAWeek(); 
-
     getWeeklyPet();
     // console.log("currentDay: ", currentDay);
   }, [])
 
   return (
     <>
-      {/* <VStack> */}
       <section className="sec-1">
         <Box id="welcoming" borderColor={"#fff"}>
           <Box id="arrow">
@@ -87,16 +83,6 @@ const HomePage = () => {
             <span style={{ '--i': 9 }}>e</span>
             <span style={{ '--i': 10 }}>s</span>
             <span style={{ '--i': 11 }}>t</span>
-
-            {/* <Box className="word">
-              <Box>O</Box><Box>n</Box><Box>l</Box><Box>y</Box>
-            </Box>
-            <Box className="word">
-              <Box>T</Box><Box>h</Box><Box>e</Box>
-            </Box>
-            <Box className="word">
-              <Box>B</Box><Box>e</Box><Box>s</Box><Box>t</Box>
-            </Box> */}
           </Box>
           <Heading as={'h1'} id="middle" borderColor={"#fff"}>
             <span className="content1">For Your</span>
@@ -156,9 +142,6 @@ const HomePage = () => {
             </Box>
           </Box>
         </Box>
-        {/* <Box id="getInTouch">
-
-        </Box> */}
       </section>
       <section className="sec-4">
         <Box id="footerContent">
@@ -229,7 +212,7 @@ const HomePage = () => {
           <Box>
             <Box>Newsletter</Box>
             <Box>
-              <input type="email" name="email" placeholder="Your email..." required/>
+              <input type="email" name="email" placeholder="Your email..." required />
               <input type="submit" value="Subscribe" />
             </Box>
           </Box>
@@ -238,7 +221,6 @@ const HomePage = () => {
           Copyright © 2020. All Rights Reserved. Carefully crafted by <span>ThemeLexus</span>.
         </Box>
       </section>
-      {/* </VStack> */}
     </>
     // <div className="welcome-div">
     //   <Container>

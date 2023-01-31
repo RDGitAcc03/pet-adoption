@@ -1,8 +1,10 @@
-html, body{
+html,
+body {
     height: 100%;
     box-sizing: border-box;
 }
-#root{
+
+#root {
     height: 115%;
     background-image: url("./images/whiteDog.jpg");
     background-size: cover;
@@ -10,4 +12,26 @@ html, body{
     /* background-repeat: no-repeat; */
     /* background-position: 2%; */
     /* width: 100%; */
-}   
+}
+
+.toast-message {
+    background-color: #323232;
+    position: absolute; 
+    left: 10px;
+    top: 100px; 
+    color: #fff;
+    font-family: 'Trueno-Round-Bold';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    width: 23vw;
+    padding: 10px 20px;
+}
+
+:root {
+    --toastify-color-progress-light: linear-gradient(
+        to right,
+        rgb(255, 204, 213),
+        rgb(224, 11, 160)
+      );
+}

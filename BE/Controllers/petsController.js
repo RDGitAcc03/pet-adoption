@@ -48,8 +48,8 @@ async function getPetById(req, res) {
 async function findPets(req, res) {
   try {
     const search = req.query;
-    // console.log("search controller", search);
     const filteredPets = await findPetsModel(search);
+    // console.log("filteredPets: ", filteredPets);
     if (filteredPets) res.status(200).send(filteredPets);
   } catch (err) {
     res.status(400).send(err.message);

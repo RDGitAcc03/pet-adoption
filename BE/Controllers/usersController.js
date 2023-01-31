@@ -37,9 +37,9 @@ async function login(req, res) {
     });
     const newUser = {...user};
     delete newUser.password;
-    console.log("user pass", user.password);
-    console.log("user", user);
-    console.log("user", newUser);
+    // console.log("user pass", user.password);
+    // console.log("user", user);
+    // console.log("user", newUser);
     res.send(user);
   } catch (err) {
     console.log(err.message);

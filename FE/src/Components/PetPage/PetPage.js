@@ -157,12 +157,10 @@ const PetPage = () => {
           <p>Type: {pet.type}</p>
           <p>Adoption Status: {pet.adoptionStatus}</p>
           <p>Color: {pet.color}</p>
-          {/* <p>Hypoallergenic: {pet.hypoallergenic}</p>
-          <p>Dietary Restrictions: {pet.dietaryRestrictions}</p>
-          <p>Breed Of Animal: {pet.breedOfAnimal}</p>
+
           <p>Height: {pet.height}</p>
           <p>Weight: {pet.weight}</p>
-          <p>Bio: {pet.bio}</p> */}
+          <p>Bio: {pet.bio}</p> 
         </Card.Body>
       </Card>
       <div className="buttons">

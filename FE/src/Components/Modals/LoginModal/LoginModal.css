@@ -2,11 +2,37 @@
   display: flex;
   justify-content: center;
 }
+
 .signup-from-login {
   display: flex;
   justify-content: center;
 }
-.signup-from-login span {
+
+.signup-from-login span:nth-child(2) {
   color: rgb(15, 15, 179);
   cursor: pointer;
+  margin-left: 10px;
+}
+
+.login-btn {
+  font-family: 'Trueno-Round-Bold';
+  font-weight: normal;
+  font-style: normal;
+  display: block;
+  font-size: 14px;
+  color: #FFF;
+  flex-basis: 51px;
+  border-radius: 15px;
+  border: none;
+  padding: 13px 40px;
+  background-color: rgb(255, 72, 128);
+  margin-top: 20px !important;
+
+  transition: background-color .2s ease-out;
+}
+
+.login-btn:hover {
+  color: #fff;
+  background-color: #ffae00;
+  border-color: #ffae00;
 }

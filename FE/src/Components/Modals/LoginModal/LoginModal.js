@@ -71,8 +71,7 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
             </Form.Group>
             <div className="btn-container">
               <Button
-                className="login-btn"
-                variant="primary"
+                className="login-btn"               
                 type="submit"
                 onClick={(e) => handleLogin(e)}
               >
@@ -81,7 +80,9 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
             </div>
             <div className="signup-from-login mt-4">
               <Form.Text>
-                Need A New Account?
+                <span>
+                  Need A New Account?
+                </span>
                 <span onClick={(e) => handleSignupFromLogin(e)}>
                   Sign up now!
                 </span>
