@@ -25,7 +25,7 @@ const AddPet = () => {
     type: "",
     adoptionStatus: "",
     color: "",
-    hypoallergenic: "",
+    hypoallergenic: false,
     dietaryRestrictions: "",
     name: "",
     breedOfAnimal: "",

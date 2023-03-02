@@ -1,8 +1,8 @@
 const Pet = require("../Schemas/MongoSchemas/petSchema");
-async function addPetModel(newUser) {
+async function addPetModel(newPet) {
   try {
-    delete newUser.petId;
-    const pet = new Pet(newUser);
+    // delete newUser.petId;
+    const pet = new Pet(newPet);
     await pet.save();
     return pet;
   } catch (err) {

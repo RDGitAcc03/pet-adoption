@@ -6,9 +6,9 @@ const petSchema = new Schema(
     type: String, // String is shorthand for {type: String}
     adoptionStatus: String,
     color: String,
-    hypoallergenic: Boolean,
+    hypoallergenic: {type: Boolean, default: false},
     dietaryRestrictions: String,
-    name: String,
+    name: {type: String, required: true},
     breedOfAnimal: String,
     height: {type: Number, default: 0},
     weight: {type: Number, default: 0},

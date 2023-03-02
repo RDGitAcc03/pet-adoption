@@ -16,9 +16,9 @@ function addPet(req, res) {
     res.send(pet);
     return;
     }
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err.message);
+  } catch(error) {
+    console.log(error);
+    res.status(500).send(error.message);
   }
 }
 
