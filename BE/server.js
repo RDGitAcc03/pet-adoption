@@ -11,13 +11,14 @@ const app = express();
 
 app.use("/images", express.static('images'));   
 app.use(express.json());
-app.use(cors({origin: getServerUrl(), credentials: true}));
-app.use(cookieParser());
 
 const getServerUrl = () => {
   if (process.env.NODE_ENV === 'production') return 'https://example-petadoption.onrender.com'
   return 'http://localhost:3000';
 }
+app.use(cors({origin: getServerUrl(), credentials: true}));
+app.use(cookieParser());
+
 
 app.use("/users", usersRoute);
 app.use("/pets", petsRoute);
