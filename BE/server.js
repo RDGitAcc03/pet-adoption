@@ -16,7 +16,7 @@ const getServerUrl = () => {
   if (process.env.NODE_ENV === 'production') return 'https://example-petadoption.onrender.com'
   return "http://localhost:3000";
 }
-app.use(cors({origin: getServerUrl(), credentials: true}));
+app.use(cors({origin: "*", credentials: true}));
 app.use(cookieParser());
 
 
