@@ -7,6 +7,7 @@ function getServerUrl(){
 
 const instance = axios.create({
   baseURL: getServerUrl(),
+  headers: {"Access-Control-Allow-Origin": getServerUrl()},
   // timeout: 1000,
   withCredentials: true,
 });
