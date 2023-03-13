@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getServerUrl = () => {
+function getServerUrl(){
   if (process.env.NODE_ENV === 'production') return 'https://example-petadoption.onrender.com'
   return "http://localhost:8080";
 }
