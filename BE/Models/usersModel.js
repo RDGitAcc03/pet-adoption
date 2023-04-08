@@ -115,7 +115,10 @@ async function updateUserModal(userId, updatedUser) {
 async function getUserByIdModel(userId) {
   try {
     const user = await User.findById(userId);
-    if (user) return user;
+    const UserWithoutPassword = user.toObject();
+    delete UserWithoutPassword.password;
+    // console.log("getUserByIdModel: ", UserWithoutPassword)
+    if (user) return UserWithoutPassword;
   } catch (err) {
     console.log(err.message);
   }

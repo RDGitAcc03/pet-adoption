@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import instance from "./axiosContext";
 
-
+let renderCount = 0;
 const userContext = createContext({});
 
 export const useUserContext = () => {
@@ -9,6 +9,8 @@ export const useUserContext = () => {
 };
 
 const UserContextProvider = ({ children }) => {
+  renderCount++;
+  // console.log("UserContextProvider rendered = ", renderCount);
   const [token, setToken] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState({});
@@ -18,8 +20,7 @@ const UserContextProvider = ({ children }) => {
     try {
       const userData = await instance.get("/users/verifyLogin");
       if (userData) {
-        const { firstName, id, isAdmin } = userData.data;
-        console.log("User Connected: ", { firstName, id } );
+        const { isAdmin } = userData.data;
         if (userData.data) {
           setUserLoggedIn(userData.data);
           setToken(true);
@@ -33,8 +34,10 @@ const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     getUserDetails();
+    console.log("token from UserContextProvider: ", token);
+    console.log("User Connected: ", { "firstName": userLoggedIn.firstName, "id": userLoggedIn.id } );
   }, [])
-
+  
   return (
     <userContext.Provider
       value={{
@@ -50,7 +53,7 @@ const UserContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </userContext.Provider>
+      </userContext.Provider>
   );
 };
 

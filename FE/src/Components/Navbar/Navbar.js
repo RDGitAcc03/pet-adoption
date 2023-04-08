@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsGearFill, BsHouseDoor } from "react-icons/bs";
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import { useNavigate, Link } from "react-router-dom";
@@ -30,6 +30,9 @@ const NavBar = () => {
   // const handleMyPetsClicked = () => {
 
   // }
+  useEffect(() => {
+    console.log("token from navbar: ", token);
+  }, [token])
 
   return (
     <>

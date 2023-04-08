@@ -210,7 +210,7 @@ const AddPet = () => {
           </Form.Group>
           <div className="form-child">
             <Form.Group className="txt-inputs">
-              <Form.Control
+              <Form.Control className="txt-input"
                 type="text"
                 placeholder="Name"
                 name="name"
@@ -219,7 +219,7 @@ const AddPet = () => {
                   setAddedPet({ ...addedPet, [e.target.name]: e.target.value })
                 }
               />
-              <Form.Control
+              <Form.Control className="txt-input"
                 type="text"
                 placeholder="Breed Of Animal"
                 name="breedOfAnimal"
@@ -228,7 +228,7 @@ const AddPet = () => {
                   setAddedPet({ ...addedPet, [e.target.name]: e.target.value })
                 }
               />
-              <Form.Control
+              <Form.Control className="txt-input"
                 type="text"
                 placeholder="Height"
                 name="height"
@@ -237,7 +237,7 @@ const AddPet = () => {
                   setAddedPet({ ...addedPet, [e.target.name]: e.target.value })
                 }
               />
-              <Form.Control
+              <Form.Control className="txt-input"
                 type="text"
                 placeholder="Weight"
                 name="weight"

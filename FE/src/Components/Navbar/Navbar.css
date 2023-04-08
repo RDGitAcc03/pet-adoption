@@ -23,7 +23,12 @@ a.navLink {
     justify-content: center;
     align-items: center;
     color: unset;
+    font-family: 'Trueno-Round-Bold';
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: -1px;
     color: #393d72;
+    /* color: #393d72; */
     /* border: 1px solid; */
 }
 a.navLink:hover {

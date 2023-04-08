@@ -35,11 +35,10 @@ async function login(req, res) {
       sameSite: "none",
       secure: true,
     });
-    const newUser = {...user};
-    delete newUser.password;
-    // console.log("user pass", user.password);
-    // console.log("user", user);
-    // console.log("user", newUser);
+    user = user.toObject();
+    delete user.password;
+    // console.log("newUserLoggedIn: ", user);
+
     res.send(user);
   } catch (err) {
     console.log(err.message);
@@ -188,9 +187,9 @@ async function updateUser(req, res) {
 }
 
 async function getUser(req, res) {
-  const { userId } = req.params;
-  console.log("userId", userId);
   try {
+    const { userId } = req.params;
+    console.log("userId from getUserController", userId);
     const user = await getUserByIdModel(userId);
     if (user) res.send(user);
     return;

@@ -31,6 +31,7 @@ const App = () => {
 
   useEffect(() => {
     token && showToastMessage();
+    console.log("token from App: ", token)
   }, [token])
 
   return (
@@ -57,9 +58,10 @@ const App = () => {
                 </ProtectedAdmin>} />
             <Route exact path="/myPets"
               element={
-                <ProtectedUser >
+                <ProtectedUser>
                   <MyPets />
                 </ProtectedUser>} />
+            <Route exact path="/" element={<HomePage />} />
             <Route path="/profile"
               element={
                 <ProtectedUser>
@@ -67,12 +69,11 @@ const App = () => {
                 </ProtectedUser>} />
             <Route path="/searchPets" element={<SearchPet />} />
             <Route path="/pets" element={<PetPage />} />
-            <Route exact path="/" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </PetContextProvider>
     </>
   );
 };
-
+  
 export default App;

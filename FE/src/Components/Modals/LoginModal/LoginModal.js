@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Form, Button, Container } from "react-bootstrap";
 import "./LoginModal.css";
 import SignupModal from "../SignupModal/SignupModal";
@@ -10,7 +10,7 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
   const navigate = useNavigate();
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  const { userLoggedIn, setUserLoggedIn, setToken, setIsAdmin } = useUserContext();
+  const { userLoggedIn, setUserLoggedIn, token, setToken, setIsAdmin } = useUserContext();
 
   const handleSignupFromLogin = (e) => {
     e.preventDefault();
@@ -21,12 +21,9 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
   const handleLogin = async (e) => {
     try {
       e.preventDefault();
-      console.log("userLoggedIn", userLoggedIn);
-      const userData = await instance.post("/users/login", userLoggedIn);
-      console.log("userData.data", userData.data);
+      const userData = await instance.post("/users/login", { "email": userLoggedIn.email, "password": userLoggedIn.password });
       if (userData) {
         const { isAdmin } = userData.data;
-        console.log("isAdmin from Login Modal: ", isAdmin);
         setShowLoginModal(false);
         setUserLoggedIn(userData.data);
         setToken(true);
@@ -37,6 +34,10 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
       console.log(err.message);
     }
   };
+
+  useEffect(() => {
+    console.log("token from login: ", token);
+  }, [token])
 
   return (
     <>
@@ -71,7 +72,7 @@ const LoginModal = ({ showLoginModal, setShowLoginModal }) => {
             </Form.Group>
             <div className="btn-container">
               <Button
-                className="login-btn"               
+                className="login-btn"
                 type="submit"
                 onClick={(e) => handleLogin(e)}
               >

@@ -6,7 +6,8 @@ import { Heading, Stack, Flex, Box } from '@chakra-ui/react';
 import styles from "../SearchPet/SearchPet.module.css";
 import PetList from "../PetList/PetList";
 import instance from "../../Contexts/axiosContext";
-import { AiOutlineClear } from 'react-icons/ai';
+// import ButtonCleaner from "../Accessories/ButtonCleaner/ButtonCleaner";
+import { AiOutlineClear } from "react-icons/ai";
 
 const SearchPet = () => {
   const [arrPets, setArrPets] = useState([]);
@@ -57,6 +58,7 @@ const SearchPet = () => {
   }
 
   const clearForm = () => {
+    // console.log("clear form");
     const form = document.querySelector('form');
     setSearchedPet(defaultSearchObj);
     form.reset();
@@ -97,19 +99,16 @@ const SearchPet = () => {
         boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
       }}>
         <AiOutlineClear onClick={() => clearForm()}
-          style={{
-            cursor: "pointer",
-            position: "absolute",
-            top: "4%",
-            right: "5%",
-            fontSize: "1.4rem"
-          }} />
+          style={
+            { cursor: "pointer", position: "absolute", top: "4%", right: "5%", fontSize: "1.4rem" }
+          } />
         <Stack>
           <Heading as="h1" size="lg" style={{
             position: "absolute",
             top: "9%",
-            left: "38.9%"
-          }}>Header</Heading>
+            left: "0",
+            width: "100%"
+          }}>Find A Pet</Heading>
           <Flex justifyContent='space-between' style={{
             position: "absolute",
             top: "19%",
@@ -162,7 +161,7 @@ const SearchPet = () => {
               <label>Name:</label>
               <input
                 className={styles["input-style"]}
-                placeholder="Name"
+                // placeholder="Name"
                 name="name"
                 onChange={(e) => setProperties(e)}
               />
@@ -171,7 +170,7 @@ const SearchPet = () => {
               <label>Height (Cm):</label>
               <input
                 className={styles["input-style"]}
-                placeholder="Height"
+                // placeholder="Height"
                 name="height"
                 onChange={(e) => setProperties(e)}
               />
@@ -180,7 +179,7 @@ const SearchPet = () => {
               <label>Weight (Kg):</label>
               <input
                 className={styles["input-style"]}
-                placeholder="Weight"
+                // placeholder="Weight"
                 name="weight"
                 onChange={(e) => setProperties(e)}
               />

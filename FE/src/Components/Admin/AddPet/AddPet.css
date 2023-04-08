@@ -102,11 +102,11 @@ input[type="checkbox"] {
     margin-bottom: 50px;
     padding: 0;
 }
-input[type="text"]{
-    margin: 13px 0;
+.txt-input{
+    margin: 13.5px 0;
 }
-input[type="text"]:nth-child(1), input[type="text"]:last-child{
-    margin: 0;
+.txt-input:nth-child(1), .txt-input:last-child{
+    margin: 0px;
 }
 .buttons{
     /* border: 1px solid; */
