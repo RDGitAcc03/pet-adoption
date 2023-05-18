@@ -1,4 +1,4 @@
-# pet-adoption is a website application 
+# pet-adoption is a website application.
 
 https://petadoptionfe.onrender.com/
 
