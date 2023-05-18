@@ -1,2 +1,4 @@
-# pet-adoption
-Full stack application using React &amp; Node.js
+# pet-adoption is a full-stack application using React & Node.js
+
+https://petadoptionfe.onrender.com/
+
